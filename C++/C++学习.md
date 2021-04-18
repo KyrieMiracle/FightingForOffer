@@ -1175,6 +1175,39 @@ back();      //返回容器中最后一个数据元素
 sort(iterator begin, iterator end); //对begin和end区间内元素进行排序
 ```
 
+##### 2.5.7 priority_queue 优先队列
+
+（1）本质上是一个堆实现
+
+（2）使用：
+
+```c++
+#include <queue>
+priority_queue<Type, Container, Functional> q;
+// Type --- 数据类型
+// Container --- 容器类型，必须是用数组实现得容器，如vector、deque，stl默认是vector
+// Functional --- 比较方式，默认是最大堆，一般传入仿函数
+
+//自定义数据类型下的实现最大堆
+//方法一：运算符”<“重载
+struct tmp{
+    int x;
+    tmp(int a) x(a){};
+    bool operator<(const tmp& a) const{
+        return x < a.x
+    }
+};
+//方法二：重写仿函数
+class mycomparison{
+public:
+    bool operator()(const T& a, const T& b){
+        return a.x < b.x   //b可以理解为已经在堆里面的元素
+    }
+}
+```
+
+（3）题目：347 前K个高频元素
+
 
 
 #### 2.6 Stack
