@@ -1275,6 +1275,20 @@ size();       //返回栈的大小
 （3）如果operator()接收两个参数，那么叫做二元谓词
 （4）用在函数传参
 
+```c++
+class mycompare{
+public:
+    bool operator()(int a, int b){
+        return a > b;
+    }
+};
+int main(){
+    vector<int> nums = {1,5,6,8,7,4};
+    sort(nums.begin(), nums.end(), mycompare());
+}
+
+```
+
 
 
 
