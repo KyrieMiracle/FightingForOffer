@@ -573,6 +573,40 @@ person * p = new person[10]; // p[i]里面存的是person类型，不是指针
 
 
 
+#### 7.7 void*指针
+
+1、void类型指针可以指向任意类型的数据，即可用任意数据类型的指针对void指针赋值
+
+```c++
+int *pint;
+void *pvoid;
+pvoid = pint;
+```
+
+2、如果要将 pvoid 赋给其他类型指针，则需要强制类型转换
+
+```c++
+pint = (int*)pvoid
+```
+
+3、void指针不能解引用
+
+4、如果函数的参数可以是任意类型的指针，那么应声明其参数为 void*
+      典型的如内存操作函数 memcpy 和 memset 的函数原型：
+
+```c++
+void* memcpy(void* dest, const void* src, size_t len);
+void* memset(void* buffer, intc, size_tnum);
+```
+
+​      这样，任何类型的指针都可以传入memcpy和memset中，这也真实体现了内存操作函数的意义，因为它操作的对象仅仅是一片内存，而不论这片内存是什么类型
+
+参考干货：
+
+https://zhuanlan.zhihu.com/p/163676489
+
+
+
 ## 二、提高编程
 
 ### 1、泛型编程--模板
